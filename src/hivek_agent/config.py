@@ -42,7 +42,7 @@ class Settings(BaseSettings):
     api_port: int = 8100
 
     # Browser calls this service directly from the Next.js client, so CORS is required.
-    cors_origins: list[str] = Field(
+    cors_origins: str | list[str] = Field(
         default_factory=lambda: [
             "http://localhost:3000",
             "http://127.0.0.1:3000",
@@ -88,7 +88,7 @@ class Settings(BaseSettings):
     inbound_mode: InboundMode = "polling"
     auto_reply_mode: AutoReplyMode = "suggestion"
     auto_reply_min_confidence: float = 0.90
-    auto_reply_allowed_intents: list[str] = Field(
+    auto_reply_allowed_intents: str | list[str] = Field(
         default_factory=lambda: ["greeting", "ask_location", "ask_basic_process"]
     )
 
